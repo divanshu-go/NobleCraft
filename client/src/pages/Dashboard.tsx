@@ -8,6 +8,7 @@ interface QuickAction {
   description: string;
   action: string;
   gradient: string;
+  bgColor: string;
   stat?: string;
   trend?: string;
 }
@@ -26,7 +27,8 @@ export default function Dashboard() {
       title: 'Quick Pay',
       description: 'Send money instantly',
       action: 'Send Payment',
-      gradient: 'from-blue-500 to-blue-600',
+      gradient: 'from-blue-500 via-blue-600 to-cyan-500',
+      bgColor: 'bg-blue-500',
       stat: '$2,450',
       trend: '+18%'
     },
@@ -36,7 +38,8 @@ export default function Dashboard() {
       title: 'Schedule',
       description: 'Book your next meeting',
       action: 'New Meeting',
-      gradient: 'from-purple-500 to-purple-600',
+      gradient: 'from-purple-500 via-purple-600 to-pink-500',
+      bgColor: 'bg-purple-500',
       stat: '3 today',
       trend: '+2'
     },
@@ -46,7 +49,8 @@ export default function Dashboard() {
       title: 'Order Food',
       description: 'Your favorites ready',
       action: 'Quick Order',
-      gradient: 'from-orange-500 to-orange-600',
+      gradient: 'from-orange-500 via-orange-600 to-amber-500',
+      bgColor: 'bg-orange-500',
       stat: '$12.99',
       trend: 'Chipotle'
     },
@@ -56,7 +60,8 @@ export default function Dashboard() {
       title: 'Quick Call',
       description: 'Connect instantly',
       action: 'Start Call',
-      gradient: 'from-green-500 to-emerald-600',
+      gradient: 'from-green-500 via-emerald-600 to-teal-500',
+      bgColor: 'bg-green-500',
       stat: '8 calls',
       trend: '+3'
     },
@@ -66,7 +71,8 @@ export default function Dashboard() {
       title: 'Record',
       description: 'Screen & camera',
       action: 'Start Recording',
-      gradient: 'from-red-500 to-rose-600',
+      gradient: 'from-red-500 via-rose-600 to-pink-500',
+      bgColor: 'bg-red-500',
       stat: '1080p',
       trend: 'HD'
     },
@@ -76,17 +82,18 @@ export default function Dashboard() {
       title: 'AI Assistant',
       description: 'Smart suggestions',
       action: 'View Tasks',
-      gradient: 'from-violet-500 to-fuchsia-600',
+      gradient: 'from-violet-500 via-fuchsia-600 to-purple-500',
+      bgColor: 'bg-violet-500',
       stat: '5 tasks',
       trend: 'pending'
     },
   ];
 
   const metrics = [
-    { label: 'Productivity', value: '87%', change: '+12%', prevValue: '75%', icon: '📈', color: 'blue', chartData: [65, 70, 68, 75, 80, 85, 87] },
-    { label: 'Tasks Completed', value: '24', change: '+8', prevValue: '16', icon: '✅', color: 'green', chartData: [12, 15, 14, 18, 20, 22, 24] },
-    { label: 'Time Saved', value: '2.5h', change: '+30m', prevValue: '2h', icon: '⚡', color: 'purple', chartData: [1.5, 1.8, 1.6, 2.0, 2.2, 2.3, 2.5] },
-    { label: 'Focus Score', value: '92', change: '+5', prevValue: '87', icon: '🎯', color: 'orange', chartData: [80, 82, 85, 87, 88, 90, 92] },
+    { label: 'Productivity', value: '87%', change: '+12%', prevValue: '75%', icon: '📈', color: 'blue', gradient: 'from-blue-500 to-cyan-500', chartData: [65, 70, 68, 75, 80, 85, 87] },
+    { label: 'Tasks Completed', value: '24', change: '+8', prevValue: '16', icon: '✅', color: 'green', gradient: 'from-green-500 to-emerald-500', chartData: [12, 15, 14, 18, 20, 22, 24] },
+    { label: 'Time Saved', value: '2.5h', change: '+30m', prevValue: '2h', icon: '⚡', color: 'purple', gradient: 'from-purple-500 to-pink-500', chartData: [1.5, 1.8, 1.6, 2.0, 2.2, 2.3, 2.5] },
+    { label: 'Focus Score', value: '92', change: '+5', prevValue: '87', icon: '🎯', color: 'orange', gradient: 'from-orange-500 to-amber-500', chartData: [80, 82, 85, 87, 88, 90, 92] },
   ];
 
   const handleQuickAction = async (actionId: string) => {
@@ -134,51 +141,49 @@ export default function Dashboard() {
             animate={{ x: 0 }}
             exit={{ x: -280 }}
             transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
-            className={`w-64 ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-r flex flex-col`}
+            className={`w-64 ${darkMode ? 'bg-gradient-to-b from-indigo-950 via-purple-950 to-indigo-950 border-purple-800' : 'bg-gradient-to-b from-white via-blue-50 to-purple-50 border-blue-300'} border-r-2 flex flex-col shadow-2xl`}
           >
             {/* Logo */}
-            <div className="p-6 border-b border-gray-200 dark:border-gray-800">
+            <div className={`p-6 border-b-2 ${darkMode ? 'border-purple-800' : 'border-blue-200'}`}>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-2xl">⚡</span>
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-xl animate-pulse">
+                  <span className="text-3xl">⚡</span>
                 </div>
                 <div>
-                  <h1 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Life Assistant</h1>
-                  <p className="text-xs text-gray-500">Pro Plan</p>
+                  <h1 className={`text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent`}>Life Assistant</h1>
+                  <p className="text-xs font-bold text-purple-600">Pro Plan ✨</p>
                 </div>
               </div>
             </div>
 
             {/* Navigation */}
-            <nav className="flex-1 p-4 space-y-1">
+            <nav className="flex-1 p-4 space-y-2">
               {[
-                { id: 'dashboard', icon: '🏠', label: 'Dashboard' },
-                { id: 'tasks', icon: '✓', label: 'Tasks', badge: '5' },
-                { id: 'calendar', icon: '📅', label: 'Calendar', badge: '3' },
-                { id: 'analytics', icon: '📊', label: 'Analytics' },
-                { id: 'contacts', icon: '👥', label: 'Contacts' },
-                { id: 'payments', icon: '💰', label: 'Payments' },
-                { id: 'settings', icon: '⚙️', label: 'Settings' },
+                { id: 'dashboard', icon: '🏠', label: 'Dashboard', color: 'from-blue-500 to-cyan-500' },
+                { id: 'tasks', icon: '✓', label: 'Tasks', badge: '5', color: 'from-green-500 to-emerald-500' },
+                { id: 'calendar', icon: '📅', label: 'Calendar', badge: '3', color: 'from-purple-500 to-pink-500' },
+                { id: 'analytics', icon: '📊', label: 'Analytics', color: 'from-orange-500 to-amber-500' },
+                { id: 'contacts', icon: '👥', label: 'Contacts', color: 'from-rose-500 to-red-500' },
+                { id: 'payments', icon: '💰', label: 'Payments', color: 'from-yellow-500 to-orange-500' },
+                { id: 'settings', icon: '⚙️', label: 'Settings', color: 'from-gray-500 to-slate-500' },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveSection(item.id)}
                   className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200 ${
                     activeSection === item.id
-                      ? darkMode
-                        ? 'bg-gray-800 text-white'
-                        : 'bg-gray-100 text-gray-900'
+                      ? `bg-gradient-to-r ${item.color} text-white shadow-lg scale-105`
                       : darkMode
-                      ? 'text-gray-400 hover:bg-gray-800 hover:text-white'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'text-gray-300 hover:bg-purple-900/50 hover:text-white'
+                      : 'text-gray-700 hover:bg-blue-100 hover:text-gray-900'
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-xl">{item.icon}</span>
-                    <span className="font-medium">{item.label}</span>
+                    <span className="font-semibold">{item.label}</span>
                   </div>
                   {item.badge && (
-                    <span className="px-2 py-0.5 text-xs font-bold rounded-full bg-blue-500 text-white">
+                    <span className="px-2.5 py-1 text-xs font-bold rounded-full bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg animate-pulse">
                       {item.badge}
                     </span>
                   )}
@@ -187,14 +192,14 @@ export default function Dashboard() {
             </nav>
 
             {/* User Profile */}
-            <div className={`p-4 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
-              <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition-colors">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">JD</span>
+            <div className={`p-4 border-t-2 ${darkMode ? 'border-purple-800' : 'border-blue-200'}`}>
+              <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-gradient-to-r from-blue-500 to-purple-500 hover:text-white cursor-pointer transition-all duration-300 hover:shadow-xl">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-lg">JD</span>
                 </div>
                 <div className="flex-1">
-                  <p className={`font-medium text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>John Doe</p>
-                  <p className="text-xs text-gray-500">john@example.com</p>
+                  <p className={`font-bold text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>John Doe</p>
+                  <p className="text-xs font-semibold text-purple-500">john@example.com</p>
                 </div>
               </div>
             </div>
@@ -203,66 +208,64 @@ export default function Dashboard() {
       </AnimatePresence>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className={`flex-1 flex flex-col overflow-hidden ${sidebarOpen ? 'ml-64' : 'ml-0'} transition-all duration-300`}>
         {/* Top Bar */}
-        <header className={`${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-b px-8 py-4`}>
+        <header className={`${darkMode ? 'bg-gradient-to-r from-indigo-950 via-purple-950 to-indigo-950 border-purple-800' : 'bg-gradient-to-r from-white via-blue-50 to-purple-50 border-blue-200'} border-b-2 px-8 py-4 shadow-xl`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className={`p-2 rounded-lg ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} transition-colors`}
+                className={`p-3 rounded-xl ${darkMode ? 'bg-purple-900/50 hover:bg-purple-800' : 'bg-blue-100 hover:bg-blue-200'} transition-all duration-200 shadow-lg`}
               >
-                <span className="text-xl">☰</span>
+                <span className="text-2xl">☰</span>
               </button>
               <div>
-                <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <h2 className={`text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent`}>
                   Good morning, John 👋
                 </h2>
-                <p className="text-sm text-gray-500">Tuesday, Oct 21, 2025 • San Francisco, 72°F ☀️</p>
+                <p className="text-sm font-semibold text-purple-500">Tuesday, Oct 21, 2025 • San Francisco, 72°F ☀️</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <button className={`p-2 rounded-lg ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} transition-colors relative`}>
-                <span className="text-xl">🔔</span>
-                <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+              <button className={`p-3 rounded-xl ${darkMode ? 'bg-purple-900/50 hover:bg-purple-800' : 'bg-blue-100 hover:bg-blue-200'} transition-all duration-200 relative shadow-lg`}>
+                <span className="text-2xl">🔔</span>
+                <span className="absolute top-0 right-0 w-3 h-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse"></span>
               </button>
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className={`p-2 rounded-lg ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'} transition-colors`}
+                className={`p-3 rounded-xl ${darkMode ? 'bg-purple-900/50 hover:bg-purple-800' : 'bg-blue-100 hover:bg-blue-200'} transition-all duration-200 shadow-lg`}
               >
-                <span className="text-xl">{darkMode ? '☀️' : '🌙'}</span>
+                <span className="text-2xl">{darkMode ? '☀️' : '🌙'}</span>
               </button>
             </div>
           </div>
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto">
+        <main className={`flex-1 overflow-y-auto ${darkMode ? 'bg-gradient-to-br from-indigo-950 via-purple-950 to-indigo-950' : 'bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50'}`}>
           {/* Hero Section with Key Stats */}
-          <div className={`${darkMode ? 'bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 border-gray-800' : 'bg-gradient-to-br from-white via-blue-50 to-purple-50 border-gray-200'} border-b px-8 py-8`}>
+          <div className="px-8 py-8">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h1 className={`text-4xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <h1 className={`text-5xl font-black mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent`}>
                     Welcome back, John 👋
                   </h1>
-                  <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                    Here's what's happening with your productivity today
+                  <p className={`text-xl font-semibold ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
+                    Here's what's happening with your productivity today ✨
                   </p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   {['Today', 'Week', 'Month'].map((range) => (
                     <button
                       key={range}
                       onClick={() => setSelectedTimeRange(range.toLowerCase())}
-                      className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                      className={`px-6 py-3 rounded-xl font-bold transition-all duration-200 shadow-lg ${
                         selectedTimeRange === range.toLowerCase()
-                          ? darkMode
-                            ? 'bg-gray-800 text-white'
-                            : 'bg-white text-gray-900 shadow-sm'
+                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white scale-105'
                           : darkMode
-                          ? 'text-gray-400 hover:text-white hover:bg-gray-800'
-                          : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
+                          ? 'bg-purple-900/50 text-purple-300 hover:bg-purple-800'
+                          : 'bg-white text-gray-700 hover:bg-blue-100'
                       }`}
                     >
                       {range}
@@ -279,35 +282,29 @@ export default function Dashboard() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className={`${darkMode ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'} border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 cursor-pointer group`}
+                    className={`${darkMode ? 'bg-gradient-to-br from-purple-900/50 to-indigo-900/50 border-purple-700' : 'bg-gradient-to-br from-white to-blue-50 border-blue-200'} border-2 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer group hover:scale-105`}
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                        darkMode ? 'bg-gray-700' : 'bg-gray-100'
-                      } group-hover:scale-110 transition-transform`}>
-                        <span className="text-2xl">{metric.icon}</span>
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-gradient-to-br ${metric.gradient} shadow-lg group-hover:scale-110 transition-transform`}>
+                        <span className="text-3xl">{metric.icon}</span>
                       </div>
-                      <div className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      <div className={`px-4 py-2 rounded-full text-sm font-bold shadow-lg ${
                         metric.change.startsWith('+')
-                          ? darkMode
-                            ? 'bg-green-500/20 text-green-400'
-                            : 'bg-green-100 text-green-700'
-                          : darkMode
-                          ? 'bg-red-500/20 text-red-400'
-                          : 'bg-red-100 text-red-700'
+                          ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
+                          : 'bg-gradient-to-r from-red-500 to-rose-500 text-white'
                       }`}>
                         {metric.change}
                       </div>
                     </div>
-                    <p className={`text-sm font-medium mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <p className={`text-sm font-bold mb-2 ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
                       {metric.label}
                     </p>
                     <div className="flex items-end justify-between">
                       <div>
-                        <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                        <p className={`text-4xl font-black bg-gradient-to-r ${metric.gradient} bg-clip-text text-transparent`}>
                           {metric.value}
                         </p>
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs font-semibold text-gray-500 mt-1">
                           from {metric.prevValue}
                         </p>
                       </div>
@@ -316,7 +313,7 @@ export default function Dashboard() {
                           metric.chartData,
                           metric.color === 'blue' ? '#3b82f6' :
                           metric.color === 'green' ? '#10b981' :
-                          metric.color === 'purple' ? '#8b5cf6' : '#f59e0b'
+                          metric.color === 'purple' ? '#a855f7' : '#f59e0b'
                         )}
                       </div>
                     </div>
@@ -335,44 +332,44 @@ export default function Dashboard() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div>
-                      <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                        Quick Actions
+                      <h2 className={`text-3xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent`}>
+                        Quick Actions ⚡
                       </h2>
-                      <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <p className={`text-sm font-semibold ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
                         One-click access to your daily tasks
                       </p>
                     </div>
-                    <button className="text-sm text-blue-500 hover:text-blue-600 font-medium flex items-center gap-1">
+                    <button className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 flex items-center gap-1">
                       View all
                       <span>→</span>
                     </button>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {quickActions.map((action, idx) => (
                       <motion.div
                         key={action.id}
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: idx * 0.05 }}
-                        className={`${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border rounded-2xl p-5 hover:shadow-lg transition-all duration-300 cursor-pointer group`}
+                        className={`${darkMode ? 'bg-gradient-to-br from-purple-900/50 to-indigo-900/50 border-purple-700' : 'bg-gradient-to-br from-white to-blue-50 border-blue-200'} border-2 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer group hover:scale-105`}
                       >
                         <div className="flex items-start gap-4">
-                          <div className={`w-12 h-12 bg-gradient-to-br ${action.gradient} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
-                            <span className="text-2xl">{action.icon}</span>
+                          <div className={`w-16 h-16 bg-gradient-to-br ${action.gradient} rounded-2xl flex items-center justify-center shadow-xl flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all`}>
+                            <span className="text-3xl">{action.icon}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className={`font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            <h3 className={`text-xl font-black mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                               {action.title}
                             </h3>
-                            <p className={`text-sm mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                            <p className={`text-sm font-semibold mb-2 ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
                               {action.description}
                             </p>
                             <div className="flex items-center justify-between">
                               <div className="flex items-baseline gap-2">
-                                <span className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                <span className={`text-2xl font-black bg-gradient-to-r ${action.gradient} bg-clip-text text-transparent`}>
                                   {action.stat}
                                 </span>
-                                <span className="text-xs text-gray-500">{action.trend}</span>
+                                <span className="text-xs font-bold text-gray-500">{action.trend}</span>
                               </div>
                             </div>
                           </div>
@@ -380,15 +377,15 @@ export default function Dashboard() {
                         <button
                           onClick={() => handleQuickAction(action.id)}
                           disabled={processingAction === action.id}
-                          className={`w-full mt-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                          className={`w-full mt-5 py-4 rounded-xl font-black text-base transition-all duration-200 shadow-lg ${
                             processingAction === action.id
                               ? 'bg-gray-200 dark:bg-gray-800 text-gray-500 cursor-not-allowed'
-                              : `bg-gradient-to-r ${action.gradient} text-white hover:shadow-lg hover:scale-[1.02]`
+                              : `bg-gradient-to-r ${action.gradient} text-white hover:shadow-2xl hover:scale-105`
                           }`}
                         >
                           {processingAction === action.id ? (
                             <span className="flex items-center justify-center gap-2">
-                              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                              <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                               </svg>
