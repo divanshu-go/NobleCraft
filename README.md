@@ -6,12 +6,21 @@ Welcome to **NobleCraft** - Your complete guide to building a professional-grade
 
 This repository contains a comprehensive **Weekend Project Plan** for creating an intelligent, all-in-one productivity dashboard designed for busy professionals and CEOs.
 
+### 🗺️ Documentation Hub
+
+📖 **[INDEX.md](./INDEX.md)** - Complete documentation index and navigation guide
+
 ### 🚀 Quick Links
 
-- **[📋 Complete Project Plan](./ONE_CLICK_LIFE_ASSISTANT_PLAN.md)** - Detailed weekend implementation guide
-- **Features**: Payment system, Meeting scheduler, Food ordering, Video calls, AI task suggestions
-- **Timeline**: Full 2-day development breakdown
-- **Tech Stack**: React, Node.js, PostgreSQL, OpenAI, and more
+- **[⚡ Quick Start Guide](./QUICK_START.md)** - Get started in 5 minutes
+- **[📋 Complete Project Plan](./ONE_CLICK_LIFE_ASSISTANT_PLAN.md)** - Detailed weekend implementation guide (⭐ MAIN DOC)
+- **[🏗️ System Architecture](./ARCHITECTURE.md)** - Technical design and architecture
+- **[🎨 UI Mockup Guide](./UI_MOCKUP_GUIDE.md)** - Visual design specifications
+- **[🔌 API Reference](./API_REFERENCE.md)** - Complete API documentation
+
+**Features**: Payment system, Meeting scheduler, Food ordering, Video calls, AI task suggestions  
+**Timeline**: Full 2-day development breakdown  
+**Tech Stack**: React, Node.js, PostgreSQL, OpenAI, and more
 
 ## ✨ Key Features
 
